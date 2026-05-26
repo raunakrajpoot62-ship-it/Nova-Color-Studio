@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Forge</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="ambient orb orb-a"></div>
+    <div class="ambient orb orb-b"></div>
+    <div class="ambient orb orb-c"></div>
+
+    <div class="app">
+      <section id="splashScreen" class="screen active">
+        <div class="splash-ring"></div>
+
+        <div class="app-logo splash-logo">
+          <div class="logo-icon">🎨</div>
+          <div class="logo-text">
+            <span>Color</span>
+            <b>Forge</b>
+          </div>
+        </div>
+
+        <h1>Smart Color Studio</h1>
+        <p>
+          Build beautiful colors, generate smart palettes, and extract colors
+          from any photo.
+        </p>
+        <button class="start-btn" id="startBtn" type="button">
+          Enter Studio
+        </button>
+      </section>
+
+      <section id="mainApp" class="screen">
+        <div class="top-bar">
+          <div class="app-logo">
+            <div class="logo-icon">🎨</div>
+            <div class="logo-text">
+              <span>Color</span>
+              <b>Forge</b>
+            </div>
+          </div>
+          <button class="small-btn" id="openUploadBtn" type="button">
+            Photo Lab
+          </button>
+        </div>
+
+        <div class="hero-card" id="previewCard">
+          <div>
+            <div class="hero-label">Live Preview</div>
+            <div class="hero-code" id="hexValue">#7C3AED</div>
+            <div class="hero-sub" id="rgbText">RGB(124, 58, 237)</div>
+            <div class="hero-sub" id="hslText">HSL(262, 83%, 58%)</div>
+          </div>
+          <div class="hero-mark">UI</div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Color Picker</h3>
+
+          <div class="picker-area" id="pickerArea">
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="picker-pointer" id="pickerPointer"></div>
+          </div>
+
+          <div class="slider-block">
+            <label for="hueSlider">Hue</label>
+            <input type="range" id="hueSlider" min="0" max="360" value="260" />
+          </div>
+
+          <div class="slider-block">
+            <label for="opacitySlider">Opacity</label>
+            <input
+              type="range"
+              id="opacitySlider"
+              min="0"
+              max="100"
+              value="100"
+            />
+          </div>
+        </div>
+
+        <div class="action-grid">
+          <button id="randomColorBtn" type="button">🎲 Random</button>
+          <button id="copyColorBtn" type="button">📋 Copy Color</button>
+          <button id="exportCssBtn" type="button">📦 Export CSS</button>
+          <button id="openUploadBtn2" type="button">🖼 Photo Lab</button>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Color Details</h3>
+
+          <div class="detail-row">
+            <span>HEX</span>
+            <div>
+              <strong id="hexText">#7C3AED</strong>
+              <button class="mini-btn" id="copyHexBtn" type="button">
+                Copy
+              </button>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <span>RGB</span>
+            <div>
+              <strong id="rgbValueText">rgb(124, 58, 237)</strong>
+              <button class="mini-btn" id="copyRgbBtn" type="button">
+                Copy
+              </button>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <span>HSL</span>
+            <div>
+              <strong id="hslValueText">hsl(262, 83%, 58%)</strong>
+              <button class="mini-btn" id="copyHslBtn" type="button">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-head">
+            <h3 class="card-title">Smart Palette</h3>
+            <div class="mode-row">
+              <button id="monoBtn" type="button">Mono</button>
+              <button id="compBtn" type="button">Comp</button>
+              <button id="analogBtn" type="button">Analog</button>
+            </div>
+          </div>
+          <div class="palette-grid" id="paletteActive"></div>
+        </div>
+      </section>
+
+      <section id="uploadScreen" class="screen">
+        <div class="top-bar">
+          <div>
+            <div class="badge">Photo Analysis</div>
+            <h2>Image Color Extractor</h2>
+          </div>
+          <button class="small-btn" id="backHomeBtn" type="button">Back</button>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Upload a Photo</h3>
+          <input
+            class="file-input"
+            type="file"
+            id="imageUpload"
+            accept="image/*"
+          />
+
+          <div class="canvas-wrap">
+            <canvas id="canvas"></canvas>
+            <div id="lens"></div>
+          </div>
+
+          <div class="canvas-info" id="canvasInfo">
+            Tap the image to inspect a pixel color.
+          </div>
+          <div class="hint-line">
+            Drag across the image to inspect nearby pixels in real time.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Extracted Colors</h3>
+          <div class="palette-grid" id="imagePalette"></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="toast" class="toast">Copied</div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+             
